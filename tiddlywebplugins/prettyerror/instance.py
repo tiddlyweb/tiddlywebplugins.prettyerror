@@ -1,3 +1,7 @@
+"""
+Establish the data structures representing the bags and recipes needed
+by this plugin.
+"""
 
 store_contents = {}
 store_structure = {}
@@ -21,7 +25,7 @@ store_structure['recipes']['_errors'] = {
             'manage': ['R:ADMIN'],
             'delete': ['R:ADMIN'],
             'owner': 'administractor',
-            'write': ['R:ADMIN'],
+            'create': ['R:ADMIN'],
             },
         }
 
