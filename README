@@ -9,15 +9,8 @@ two bags. One contains the default error pages, the other is
 initially empty such that the ADMIN of the instance can do what
 they like.
 
-This is alpha-level software being developed for use with
-TiddlySpace. It requires TiddlyWeb 1.1.x which has not been
-packaged for release.
+This software was developed for use with TiddlySpace. It should
+be noted that using it can have a tendency to make logged error
+messages more confusing than they might otherwise be.
 
 See tiddlywebplugins.pretterror.exceptor for details.
-
-Copyright 2010, Chris Dent <cdent@peermore.com>
-
-BSD Licensed, like TiddlyWeb.
-
-repository: http://github.com/tidldyweb/tiddlyweb-plugins
-
