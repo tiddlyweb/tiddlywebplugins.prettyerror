@@ -7,7 +7,7 @@ See tiddlywebplugins.prettyerror.exceptor for details
 on operation.
 """
 
-__version__ = '0.9.5'
+__version__ = '0.9.6'
 
 
 import selector
