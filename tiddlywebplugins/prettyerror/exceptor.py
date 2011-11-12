@@ -37,7 +37,7 @@ class PrettyHTTPExceptor(HTTPExceptor):
     the same as the HTTP status involved. The tiddler.text
     is a template with $name style variable interpolation.
     The names come from the exception status, the exception
-    message, and any key in the environment. For keys in 
+    message, and any key in the environment. For keys in
     the environment that have dict values, composite keys are
     created making a flat dict:
     environ['tiddlyweb.config']['server_host']['host'] becomes
@@ -143,7 +143,7 @@ def flattendict(d, pfx='', sep='_'):
     if isinstance(d, dict):
         if pfx:
             pfx += sep
-        return chain(*(flattendict(v, pfx+tidy_key(k), sep)
+        return chain(*(flattendict(v, pfx + tidy_key(k), sep)
             for k, v in d.iteritems()))
     else:
         return (pfx, d),

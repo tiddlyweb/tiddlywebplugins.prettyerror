@@ -1,5 +1,5 @@
 """
-Used for testing only.
+Config information, used for testing only.
 """
 
 from tiddlywebplugins.instancer.util import get_tiddler_locations
