@@ -170,4 +170,4 @@ href="%s"
 type="text/css" />""" % css_uri
     info.update(flattendict(environ))
 
-    return template.substitute(**info)
+    return template.safe_substitute(**info)
