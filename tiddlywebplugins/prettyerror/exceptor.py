@@ -145,6 +145,8 @@ def flattendict(d, pfx='', sep='_'):
             pfx += sep
         return chain(*(flattendict(v, pfx + tidy_key(k), sep)
             for k, v in d.iteritems()))
+    elif isinstance(d, unicode):
+        return (pfx, d.encode('UTF-8')),
     else:
         return (pfx, d),
 
