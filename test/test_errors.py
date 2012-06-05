@@ -56,6 +56,13 @@ def test_tiddlyweb_404():
     assert response['content-type'] == 'text/html; charset=UTF-8'
     assert 'Path not found for "/bags/fake"' in content
 
+def test_plain_output():
+    response, content = http.request('http://0.0.0.0:8080/bags/fake',
+            method='GET', headers={'Accept': 'application/json'})
+    assert response['status'] == '404'
+    assert response['content-type'] == 'text/plain; charset=UTF-8'
+    assert '404 Not Found: fake not found' in content
+
 def test_404_with_unicode():
     """
     Apparently this bug is only tickled under some wsgi hosts, notably

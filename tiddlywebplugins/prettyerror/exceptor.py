@@ -15,6 +15,7 @@ from tiddlyweb.control import determine_bag_from_recipe
 from tiddlyweb.model.recipe import Recipe
 from tiddlyweb.model.tiddler import Tiddler
 from tiddlyweb.store import NoRecipeError, NoBagError, NoTiddlerError
+from tiddlyweb.web.util import get_serialize_type
 
 DEFAULT_TEXT = """
 <html>
@@ -77,9 +78,11 @@ class PrettyHTTPExceptor(HTTPExceptor):
         status = exc.status.split(' ', 1)[0]
         output = exc.output()
 
+        html_out = _is_html_out(environ, status)
+
         headers = []
         for header, value in exc.headers():
-            if (not status.startswith('3') and
+            if (html_out and
                     header.lower() == 'content-type'):
                 value = 'text/html; charset=UTF-8'
             headers.append((header, value))
@@ -87,7 +90,7 @@ class PrettyHTTPExceptor(HTTPExceptor):
         start_response(exc.status, headers, exc_info)
 
         # don't send pretty errors with 3xx responses
-        if not status.startswith('3') and output:
+        if html_out and output:
             status_tiddler = self._get_status_tiddler(environ, status)
             text = format_error_tiddler(environ, status_tiddler, exc)
         elif output:
@@ -126,6 +129,12 @@ class PrettyHTTPExceptor(HTTPExceptor):
             tiddler.text = DEFAULT_TEXT
 
         return tiddler
+
+
+def _is_html_out(environ, status):
+    _, mime_type = get_serialize_type(environ)
+    return (not status.startswith('3') and
+            'html' in mime_type)
 
 
 def flattendict(d, pfx='', sep='_'):
