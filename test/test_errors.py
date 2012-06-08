@@ -83,3 +83,9 @@ def test_404_with_unicode():
     store.environ['silly.code'] = title
     response, content = http.request('http://0.0.0.0:8080/bags/test/tiddlers/test%C2%B7test/revisions/24')
     assert response['status'] == '404', content
+
+def test_explict_accept():
+    response, content = http.request('http://0.0.0.0:8080/bags/test/test.js',
+            headers={'Accept': 'text/javascript'})
+    assert response['status'] == '404', content
+    assert 'text/plain' in response['content-type']

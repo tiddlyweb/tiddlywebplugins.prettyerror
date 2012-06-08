@@ -10,7 +10,7 @@ import logging
 
 from itertools import chain
 
-from tiddlyweb.web.http import HTTPExceptor, HTTPException
+from tiddlyweb.web.http import HTTPExceptor, HTTPException, HTTP415
 from tiddlyweb.control import determine_bag_from_recipe
 from tiddlyweb.model.recipe import Recipe
 from tiddlyweb.model.tiddler import Tiddler
@@ -132,9 +132,12 @@ class PrettyHTTPExceptor(HTTPExceptor):
 
 
 def _is_html_out(environ, status):
-    _, mime_type = get_serialize_type(environ)
-    return (not status.startswith('3') and
-            'html' in mime_type)
+    try:
+        _, mime_type = get_serialize_type(environ)
+        return (not status.startswith('3') and
+                'html' in mime_type)
+    except HTTP415:
+        return False
 
 
 def flattendict(d, pfx='', sep='_'):
