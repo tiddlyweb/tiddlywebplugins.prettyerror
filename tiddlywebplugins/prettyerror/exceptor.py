@@ -132,11 +132,14 @@ class PrettyHTTPExceptor(HTTPExceptor):
 
 
 def _is_html_out(environ, status):
-    try:
-        _, mime_type = get_serialize_type(environ)
-        return (not status.startswith('3') and
-                'html' in mime_type)
-    except HTTP415:
+    if environ['REQUEST_METHOD'] == 'GET':
+        try:
+            _, mime_type = get_serialize_type(environ)
+            return (not status.startswith('3') and
+                    'html' in mime_type)
+        except HTTP415:
+            return False
+    else:
         return False
 
 
