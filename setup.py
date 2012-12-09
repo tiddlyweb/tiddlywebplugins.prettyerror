@@ -23,8 +23,8 @@ setup(
     packages = find_packages(exclude=['test']),
     install_requires = [
         'setuptools',
-        'tiddlyweb>=1.1.0',
-        'tiddlywebplugins.instancer',
+        'tiddlyweb>=1.3.0',
+        'tiddlywebplugins.instancer'
         ],
     include_package_data = True,
     zip_safe = False,
