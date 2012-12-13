@@ -9,8 +9,8 @@ import traceback
 import logging
 
 from itertools import chain
+from httpexceptor import HTTPExceptor, HTTPException, HTTP415
 
-from tiddlyweb.web.http import HTTPExceptor, HTTPException, HTTP415
 from tiddlyweb.control import determine_bag_from_recipe
 from tiddlyweb.model.recipe import Recipe
 from tiddlyweb.model.tiddler import Tiddler
@@ -76,7 +76,7 @@ class PrettyHTTPExceptor(HTTPExceptor):
         the text.
         """
         status = exc.status.split(' ', 1)[0]
-        output = exc.output()
+        output = exc.body()
 
         html_out = _is_html_out(environ, status)
 
@@ -173,7 +173,7 @@ def format_error_tiddler(environ, status_tiddler, exc):
     for the template.
     """
     template = string.Template(status_tiddler.text.encode('UTF-8'))
-    info = {'status': exc.status, 'message': ''.join(exc.output())}
+    info = {'status': exc.status, 'message': ''.join(exc.body())}
 
     if not environ['SCRIPT_NAME'] and environ['PATH_INFO']:
         environ['SCRIPT_NAME'] = environ['PATH_INFO']

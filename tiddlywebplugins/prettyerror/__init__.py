@@ -12,7 +12,8 @@ __version__ = '1.0.0'
 
 import selector
 
-from tiddlyweb.web.http import HTTPExceptor, HTTP404
+from httpexceptor import HTTPExceptor, HTTP404
+
 from tiddlywebplugins.prettyerror.exceptor import PrettyHTTPExceptor
 
 
