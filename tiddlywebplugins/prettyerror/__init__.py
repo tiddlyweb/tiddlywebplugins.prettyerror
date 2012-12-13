@@ -7,12 +7,12 @@ See tiddlywebplugins.prettyerror.exceptor for details
 on operation.
 """
 
-__version__ = '1.0.0'
+__version__ = '1.0.2'
 
 
 import selector
 
-from tiddlyweb.web.http import HTTPExceptor, HTTP404
+from httpexceptor import HTTPExceptor, HTTP404
 from tiddlywebplugins.prettyerror.exceptor import PrettyHTTPExceptor
 
 

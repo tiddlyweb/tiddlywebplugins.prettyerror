@@ -10,7 +10,7 @@ import logging
 
 from itertools import chain
 
-from tiddlyweb.web.http import HTTPExceptor, HTTPException, HTTP415
+from httpexceptor import HTTPExceptor, HTTPException, HTTP415
 from tiddlyweb.control import determine_bag_from_recipe
 from tiddlyweb.model.recipe import Recipe
 from tiddlyweb.model.tiddler import Tiddler

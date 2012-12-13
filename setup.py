@@ -2,7 +2,7 @@ AUTHOR = 'Chris Dent'
 AUTHOR_EMAIL = 'cdent@peermore.com'
 NAME = 'tiddlywebplugins.prettyerror'
 DESCRIPTION = 'TiddlyWeb plugin for customizable HTTP error messages'
-VERSION = '1.0.1' # don't forget to update __init__.py too
+VERSION = '1.0.2' # don't forget to update __init__.py too
 
 
 import os
@@ -23,8 +23,8 @@ setup(
     packages = find_packages(exclude=['test']),
     install_requires = [
         'setuptools',
-        'tiddlyweb>=1.1.0',
-        'tiddlywebplugins.instancer',
+        'tiddlyweb>=1.3.0',
+        'tiddlywebplugins.instancer'
         ],
     include_package_data = True,
     zip_safe = False,
