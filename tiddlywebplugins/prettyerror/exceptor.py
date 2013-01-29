@@ -30,6 +30,9 @@ this message.</p>
 """
 
 
+LOGGER = logging.getLogger(__name__)
+
+
 class PrettyHTTPExceptor(HTTPExceptor):
     """
     Subclass HTTPExceptor to change error reporting from
@@ -62,7 +65,7 @@ class PrettyHTTPExceptor(HTTPExceptor):
             exception_text = ''.join(traceback.format_exception(
                 etype, value, traceb, None))
             print >> environ['wsgi.errors'], exception_text
-            logging.warn(exception_text)
+            LOGGER.warn(exception_text)
 
             exc = HTTPException(exception_text)
             exc.status = '500 server error'
