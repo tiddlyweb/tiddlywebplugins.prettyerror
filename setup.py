@@ -24,7 +24,6 @@ setup(
     install_requires = [
         'setuptools',
         'tiddlyweb>=1.4.2',
-        'tiddlywebplugins.instancer',
         ],
     include_package_data = True,
     zip_safe = False,

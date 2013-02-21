@@ -6,7 +6,7 @@ import os
 import sys
 import urllib
 
-from tiddlywebplugins.instancer.util import spawn
+from tiddlywebplugins.imaker import spawn
 import tiddlywebplugins.prettyerror.instance as instance_module
 from tiddlywebplugins.prettyerror.config import config as init_config
 
@@ -25,6 +25,7 @@ def make_test_env():
     except OSError:
         pass
     spawn('test_instance', init_config, instance_module)
+    os.chdir('test_instance')
 
 
 def setup_module(module):
