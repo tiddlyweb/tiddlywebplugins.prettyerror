@@ -178,7 +178,7 @@ def format_error_tiddler(environ, status_tiddler, exc):
     template = string.Template(status_tiddler.text.encode('UTF-8'))
     info = {'status': exc.status, 'message': ''.join(exc.body())}
 
-    if not environ['SCRIPT_NAME'] and environ['PATH_INFO']:
+    if not environ.get('SCRIPT_NAME', '') and environ.get('PATH_INFO', ''):
         environ['SCRIPT_NAME'] = environ['PATH_INFO']
     css_uri = environ['tiddlyweb.config'].get('css_uri', None)
     info['css_link'] = ''
